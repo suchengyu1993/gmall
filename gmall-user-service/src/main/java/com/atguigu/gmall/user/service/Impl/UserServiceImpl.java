@@ -1,10 +1,10 @@
-package com.atguigu.gmall.user.Service.impl;
+package com.atguigu.gmall.user.service.Impl;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.atguigu.gmall.bean.UmsMember;
 import com.atguigu.gmall.service.UserService;
 import com.atguigu.gmall.user.mapper.UmsMemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  * UserServiceImpl
  *
  * @Author: 苏成瑜
- * @CreateTime: 2020-03-02
+ * @CreateTime: 2020-03-03
  * @Description:
  */
 @Service
