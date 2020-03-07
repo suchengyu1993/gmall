@@ -26,16 +26,28 @@ public class AttrServiceImpl implements AttrService {
     private PmsBaseAttrValueMapper pmsBaseAttrValueMapper;
 
     /**
-     * 查询平台属性表的数据
+     * 查询平台属性表的数据和平台属性值表的数据
      * @param catalog3Id
      * @return
      */
     @Override
     public List<PmsBaseAttrInfo> attrInfoList(String catalog3Id) {
+        //查询平台属性表的数据
         PmsBaseAttrInfo pmsBaseAttrInfo = new PmsBaseAttrInfo();
         pmsBaseAttrInfo.setCatalog3Id(catalog3Id);
         //传递过去对象,查询数据
-        return pmsBaseAttrInfoMapper.select(pmsBaseAttrInfo);
+        List<PmsBaseAttrInfo> pmsBaseAttrInfos = pmsBaseAttrInfoMapper.select(pmsBaseAttrInfo);
+        //添加查询平台属性值表的功能
+        for (PmsBaseAttrInfo baseAttrInfo : pmsBaseAttrInfos) {
+            PmsBaseAttrValue pmsBaseAttrValue = new PmsBaseAttrValue();
+            //设置平台属性值表里的属性id
+            pmsBaseAttrValue.setAttrId(baseAttrInfo.getId());
+            //查询平台属性值表数据
+            List<PmsBaseAttrValue> pmsBaseAttrValues = pmsBaseAttrValueMapper.select(pmsBaseAttrValue);
+            //把平台属性值表数据设置到平台属性表里
+            baseAttrInfo.setAttrValueList(pmsBaseAttrValues);
+        }
+        return pmsBaseAttrInfos;
     }
 
     /**

@@ -3,7 +3,6 @@ package com.atguigu.gmall.manager.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.atguigu.gmall.bean.PmsBaseAttrInfo;
-import com.atguigu.gmall.bean.PmsBaseAttrValue;
 import com.atguigu.gmall.service.AttrService;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +26,6 @@ public class AttrController {
     /**
      * 查询平台属性
      * @param catalog3Id 三级分类id
-     * @return
      */
     @RequestMapping("/attrInfoList")
     public List<PmsBaseAttrInfo> attrInfoList(String catalog3Id){
